@@ -1,0 +1,21 @@
+{
+    "name": "shopsys/phpstorm-inspect",
+		"version": "1.0.0",
+    "description": "Run PhpStorm's inspections from CLI and show results",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Miroslav Sustek",
+            "email": "miroslav.sustek@shopsys.cz"
+        }
+    ],
+		"autoload": {
+			"psr-4": {"ShopSys\\": "src/ShopSys"}
+		},
+		"require": {
+        "php": ">=5.4"
+    },
+    "bin": [
+        "bin/phpstorm-inspect"
+    ]
+}
