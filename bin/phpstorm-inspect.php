@@ -44,7 +44,7 @@ $inspectionRunner->runInspection(
 );
 
 $outputPrinter = new OutputPrinter(new ProblemFactory());
-$returnCode = $outputPrinter->printOutput($outputPath);
+$returnCode = $outputPrinter->printOutput($projectPath, $outputPath);
 $inspectionRunner->cleanOutputDirectory($outputPath);
 
 exit($returnCode);

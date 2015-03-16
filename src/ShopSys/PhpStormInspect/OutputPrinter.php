@@ -17,10 +17,11 @@ class OutputPrinter {
 	}
 
 	/**
+	 * @param string $projectPath
 	 * @param string $outputPath
 	 * @return int return code
 	 */
-	public function printOutput($outputPath) {
+	public function printOutput($projectPath, $outputPath) {
 		$outputFiles = glob($outputPath . '/*.xml');
 
 		$problemsByFile = [];
@@ -30,7 +31,7 @@ class OutputPrinter {
 
 			$problemsXml = $xml->xpath('/problems/problem');
 			foreach ($problemsXml as $problemXml) {
-				$problem = $this->problemFactory->create($outputFile, $problemXml);
+				$problem = $this->problemFactory->create($projectPath, $outputFile, $problemXml);
 
 				$problemsByFile[$problem->filename][] = $problem;
 			}
