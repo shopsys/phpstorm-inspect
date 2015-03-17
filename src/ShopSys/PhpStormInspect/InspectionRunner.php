@@ -67,10 +67,8 @@ class InspectionRunner {
 		}
 
 		if ($returnCode !== 0) {
-			echo $output;
+			throw new \Exception($output);
 		}
-
-		return $returnCode;
 	}
 
 	private function clearDirectory($directory) {
