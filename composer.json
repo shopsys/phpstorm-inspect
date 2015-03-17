@@ -1,6 +1,6 @@
 {
     "name": "shopsys/phpstorm-inspect",
-		"version": "1.0.0",
+		"version": "1.0.1",
     "description": "Run PhpStorm's inspections from CLI and show results",
     "license": "MIT",
     "authors": [
@@ -13,7 +13,8 @@
 			"psr-4": {"ShopSys\\": "src/ShopSys"}
 		},
 		"require": {
-        "php": ">=5.4"
+        "php": ">=5.4",
+				"symfony/filesystem": "@stable"
     },
     "bin": [
         "bin/phpstorm-inspect"

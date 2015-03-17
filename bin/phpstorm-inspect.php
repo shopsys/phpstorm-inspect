@@ -10,6 +10,7 @@ if (file_exists(__DIR__ . '/../../../autoload.php')) {
 use ShopSys\PhpStormInspect\InspectionRunner;
 use ShopSys\PhpStormInspect\OutputPrinter;
 use ShopSys\PhpStormInspect\ProblemFactory;
+use Symfony\Component\Filesystem\Filesystem;
 
 function realpathWithCheck($path) {
 	$realpath = realpath($path);
@@ -20,21 +21,23 @@ function realpathWithCheck($path) {
 	return $realpath;
 }
 
-if ($argc !== 5) {
-	echo "Expected 4 arguments:\n";
-	echo sprintf(" %s <inspectShExecutableFilepath> <projectPath> <inspectionProfileFilepath> <inspectedDirectory>\n", $argv[0]);
+if ($argc !== 6) {
+	echo "Expected 5 arguments:\n";
+	echo sprintf(" %s <inspectShExecutableFilepath> <phpstormSystemPath> <projectPath> <inspectionProfileFilepath> <inspectedDirectory>\n", $argv[0]);
 
 	exit(1);
 }
 
 $inspectShExecutableFilepath = realpathWithCheck($argv[1]);
-$projectPath = realpathWithCheck($argv[2]);
-$inspectionProfileFilepath = realpathWithCheck($argv[3]);
-$inspectedDirectory = realpathWithCheck($argv[4]);
+$phpstormSystemPath = realpathWithCheck($argv[2]);
+$projectPath = realpathWithCheck($argv[3]);
+$inspectionProfileFilepath = realpathWithCheck($argv[4]);
+$inspectedDirectory = realpathWithCheck($argv[5]);
 $outputPath = realpathWithCheck(__DIR__ . '/../output');
 
-$inspectionRunner = new InspectionRunner();
-$inspectionRunner->cleanOutputDirectory($outputPath);
+$inspectionRunner = new InspectionRunner(new Filesystem());
+$inspectionRunner->clearCache($phpstormSystemPath);
+$inspectionRunner->clearOutputDirectory($outputPath);
 $inspectionRunner->runInspection(
 	$inspectShExecutableFilepath,
 	$projectPath,
@@ -45,6 +48,6 @@ $inspectionRunner->runInspection(
 
 $outputPrinter = new OutputPrinter(new ProblemFactory());
 $returnCode = $outputPrinter->printOutput($projectPath, $outputPath);
-$inspectionRunner->cleanOutputDirectory($outputPath);
+$inspectionRunner->clearOutputDirectory($outputPath);
 
 exit($returnCode);
