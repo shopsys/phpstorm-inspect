@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7ba6eabaf89ceb9cc064c3466ff10a7b",
+    "hash": "2b3b78dfd4d04e81efcaf5698140e96a",
     "packages": [
         {
             "name": "symfony/filesystem",
