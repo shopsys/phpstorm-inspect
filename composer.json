@@ -1,22 +1,22 @@
 {
-    "name": "shopsys/phpstorm-inspect",
-    "description": "Run PhpStorm's inspections from CLI and show results",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Miroslav Sustek",
-            "email": "miroslav.sustek@shopsys.cz"
-        }
-    ],
-		"autoload": {
-			"psr-4": {"ShopSys\\": "src/ShopSys"}
-		},
-		"require": {
-        "php": ">=5.4",
-				"arvenil/ninja-mutex": "0.4.1",
-				"symfony/filesystem": "@stable"
-    },
-    "bin": [
-        "bin/phpstorm-inspect"
-    ]
+	"name": "shopsys/phpstorm-inspect",
+	"description": "Run PhpStorm's inspections from CLI and show results",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Miroslav Sustek",
+			"email": "miroslav.sustek@shopsys.cz"
+		}
+	],
+	"autoload": {
+		"psr-4": {"ShopSys\\": "src/ShopSys"}
+	},
+	"require": {
+		"php": ">=5.4",
+		"arvenil/ninja-mutex": "0.4.1",
+		"symfony/filesystem": "@stable"
+	},
+	"bin": [
+		"bin/phpstorm-inspect"
+	]
 }
