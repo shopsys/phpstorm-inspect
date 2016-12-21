@@ -2,36 +2,35 @@
 
 namespace ShopSys\PhpStormInspect;
 
-class Problem {
+class Problem
+{
+    /**
+     * @var string
+     */
+    public $inspectionName;
 
-	/**
-	 * @var string
-	 */
-	public $inspectionName;
+    /**
+     * @var string
+     */
+    public $filename;
 
-	/**
-	 * @var string
-	 */
-	public $filename;
+    /**
+     * @var int
+     */
+    public $line;
 
-	/**
-	 * @var int
-	 */
-	public $line;
+    /**
+     * @var string
+     */
+    public $class;
 
-	/**
-	 * @var string
-	 */
-	public $class;
+    /**
+     * @var string
+     */
+    public $severity;
 
-	/**
-	 * @var string
-	 */
-	public $severity;
-
-	/**
-	 * @var string
-	 */
-	public $description;
-
+    /**
+     * @var string
+     */
+    public $description;
 }
