@@ -78,8 +78,8 @@ class OutputPrinter
      */
     private function sortProblemsByLine(array &$problems)
     {
-        usort($problems, function (Problem $a, Problem $b) {
-            return $a->line - $b->line;
+        usort($problems, function (Problem $problemA, Problem $problemB) {
+            return $problemA->line - $problemB->line;
         });
     }
 }
