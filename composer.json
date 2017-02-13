@@ -9,12 +9,23 @@
         }
     ],
     "autoload": {
-        "psr-4": {"ShopSys\\": "src/ShopSys"}
+        "psr-4": {
+            "ShopSys\\": "src/ShopSys"
+        }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/shopsys/coding-standards.git"
+        }
+    ],
     "require": {
         "php": ">=5.4",
         "arvenil/ninja-mutex": "0.4.1",
         "symfony/filesystem": "@stable"
+    },
+    "require-dev": {
+        "shopsys/coding-standards": "2.0.0"
     },
     "bin": [
         "bin/phpstorm-inspect"
