@@ -40,7 +40,7 @@ try {
     $lock = new FlockLock(sys_get_temp_dir());
     $mutex = new Mutex('phpstorm-inspect', $lock);
 
-    if (!$mutex->acquireLock(2*3600*1000)) {
+    if (!$mutex->acquireLock(2 * 3600 * 1000)) {
         throw new \Exception('Could not acquire lock');
     }
 
