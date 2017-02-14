@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b481cc09a4cdefb6d85e7edfe2008f81",
+    "content-hash": "cacc8ef57d89cdc6169650e61c331d0e",
     "packages": [
         {
             "name": "arvenil/ninja-mutex",
@@ -432,16 +432,16 @@
         },
         {
             "name": "shopsys/coding-standards",
-            "version": "v2.0.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shopsys/coding-standards.git",
-                "reference": "7136a074096ca8016487dacc376c949470e31193"
+                "reference": "a340b798ad5c13ce7b69ee58a1a2b11743122742"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shopsys/coding-standards/zipball/7136a074096ca8016487dacc376c949470e31193",
-                "reference": "7136a074096ca8016487dacc376c949470e31193",
+                "url": "https://api.github.com/repos/shopsys/coding-standards/zipball/a340b798ad5c13ce7b69ee58a1a2b11743122742",
+                "reference": "a340b798ad5c13ce7b69ee58a1a2b11743122742",
                 "shasum": ""
             },
             "require": {
@@ -467,10 +467,10 @@
             ],
             "description": "Common coding standards for new ShopSys projects",
             "support": {
-                "source": "https://github.com/shopsys/coding-standards/tree/v2.0.0",
+                "source": "https://github.com/shopsys/coding-standards/tree/v2.0.1",
                 "issues": "https://github.com/shopsys/coding-standards/issues"
             },
-            "time": "2017-02-13T08:50:27+00:00"
+            "time": "2017-02-14T15:28:34+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
