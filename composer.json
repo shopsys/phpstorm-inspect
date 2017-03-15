@@ -1,11 +1,12 @@
 {
     "name": "shopsys/phpstorm-inspect",
-    "description": "Run PhpStorm's inspections from CLI and show results",
+    "description": "Package for running PhpStorm's inspections from CLI and displaying results",
+    "keywords": ["PhpStorm","inspection","code quality"],
     "license": "MIT",
     "authors": [
         {
-            "name": "Miroslav Sustek",
-            "email": "miroslav.sustek@shopsys.cz"
+            "name": "ShopSys",
+            "homepage": "https://www.shopsys.com/"
         }
     ],
     "autoload": {
@@ -13,12 +14,6 @@
             "ShopSys\\": "src/ShopSys"
         }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/shopsys/coding-standards.git"
-        }
-    ],
     "require": {
         "php": ">=5.4",
         "arvenil/ninja-mutex": "0.4.1",
