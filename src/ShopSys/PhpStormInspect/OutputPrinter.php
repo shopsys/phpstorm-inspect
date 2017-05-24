@@ -6,6 +6,7 @@ class OutputPrinter
 {
     const RETURN_CODE_OK = 0;
     const RETURN_CODE_ERROR = 1;
+    const ROW_DELIMITER = "--------------------------------------------------------------------------------\n";
 
     /**
      * @var \ShopSys\PhpStormInspect\ProblemFactory
@@ -47,7 +48,7 @@ class OutputPrinter
     /**
      * @param \ShopSys\PhpStormInspect\Problem[filename][] $problemsByFile
      */
-    private function printProblems(array $problemsByFile)
+    protected function printProblems(array $problemsByFile)
     {
         ksort($problemsByFile);
 
@@ -74,9 +75,8 @@ class OutputPrinter
 
     /**
      * @param \ShopSys\PhpStormInspect\Problem[] $problems
-     * @return \ShopSys\PhpStormInspect\Problem[]
      */
-    private function sortProblemsByLine(array &$problems)
+    protected function sortProblemsByLine(array &$problems)
     {
         usort($problems, function (Problem $problemA, Problem $problemB) {
             return $problemA->line - $problemB->line;

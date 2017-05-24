@@ -9,6 +9,7 @@ if (file_exists(__DIR__ . '/../../../autoload.php')) {
 
 use NinjaMutex\Lock\FlockLock;
 use NinjaMutex\Mutex;
+use ShopSys\PhpStormInspect\CheckstyleOutputPrinter;
 use ShopSys\PhpStormInspect\InspectionRunner;
 use ShopSys\PhpStormInspect\OutputPrinter;
 use ShopSys\PhpStormInspect\ProblemFactory;
@@ -24,10 +25,23 @@ function realpathWithCheck($path)
     return $realpath;
 }
 
+const TEXT_FORMAT = 'text';
+const CHECKSTYLE_FORMAT = 'checkstyle';
+
 try {
-    if ($argc !== 6) {
-        throw new \Exception(sprintf("Expected 5 arguments:\n"
-            . "%s <inspectShExecutableFilepath> <phpstormSystemPath> <projectPath> <inspectionProfileFilepath> <inspectedDirectory>\n", $argv[0]));
+    if ($argc !== 6 && $argc !== 7) {
+        throw new \Exception(
+            sprintf(
+                'Expected 5 or 6 arguments:\n'
+                . '%s <inspectShExecutableFilepath>'
+                . ' <phpstormSystemPath>'
+                . ' <projectPath>'
+                . ' <inspectionProfileFilepath>'
+                . ' <inspectedDirectory>'
+                . ' [<format> - ' . TEXT_FORMAT . ' (default), ' . CHECKSTYLE_FORMAT . ']\n',
+                $argv[0]
+            )
+        );
     }
 
     $inspectShExecutableFilepath = realpathWithCheck($argv[1]);
@@ -36,6 +50,7 @@ try {
     $inspectionProfileFilepath = realpathWithCheck($argv[4]);
     $inspectedDirectory = realpathWithCheck($argv[5]);
     $outputPath = realpathWithCheck(__DIR__ . '/../output');
+    $format = isset($argv[6]) ? $argv[6] : TEXT_FORMAT;
 
     $lock = new FlockLock(sys_get_temp_dir());
     $mutex = new Mutex('phpstorm-inspect', $lock);
@@ -55,7 +70,17 @@ try {
         $inspectedDirectory
     );
 
-    $outputPrinter = new OutputPrinter(new ProblemFactory());
+    switch ($format) {
+        case TEXT_FORMAT:
+            $outputPrinter = new OutputPrinter(new ProblemFactory());
+            break;
+        case CHECKSTYLE_FORMAT:
+            $outputPrinter = new CheckstyleOutputPrinter(new ProblemFactory());
+            break;
+        default:
+            throw new \Exception("Undefined format '$format'");
+    }
+
     $returnCode = $outputPrinter->printOutput($projectPath, $outputPath);
     $inspectionRunner->clearOutputDirectory($outputPath);
 
