@@ -74,7 +74,6 @@ class OutputPrinter
 
     /**
      * @param \ShopSys\PhpStormInspect\Problem[] $problems
-     * @return \ShopSys\PhpStormInspect\Problem[]
      */
     private function sortProblemsByLine(array &$problems)
     {
