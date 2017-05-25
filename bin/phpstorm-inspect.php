@@ -14,6 +14,10 @@ use ShopSys\PhpStormInspect\OutputPrinter;
 use ShopSys\PhpStormInspect\ProblemFactory;
 use Symfony\Component\Filesystem\Filesystem;
 
+/**
+ * @param string $path
+ * @return string
+ */
 function realpathWithCheck($path)
 {
     $realpath = realpath($path);
