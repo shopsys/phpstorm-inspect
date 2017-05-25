@@ -8,7 +8,7 @@ Basically, it is a wrapper for PhpStorm's `inspect.sh` script that does some ext
 
 ## Usage
 ```bash
-php bin/phpstorm-inspect <inspectShExecutableFilepath> <phpstormSystemPath> <projectPath> <inspectionProfileFilepath> <inspectedDirectory>
+php bin/phpstorm-inspect <inspectShExecutableFilepath> <phpstormSystemPath> <projectPath> <inspectionProfileFilepath> <inspectedDirectory> [<format>]
 ```
 
 ### Arguments description
@@ -17,8 +17,9 @@ php bin/phpstorm-inspect <inspectShExecutableFilepath> <phpstormSystemPath> <pro
 * `projectPath` - path to project directory (that contains `.idea` directory)
 * `inspectionProfileFilepath` - path to inspection profile XML file
 * `inspectedDirectory` - path in which are the inspected sources
+* `format (optional)` - format of output result, accepted values: "text" (default value) / "checkstyle"
 
-## Example
+## Example (text format)
 ```bash
 php bin/phpstorm-inspect \
   /opt/PhpStorm-139.1348/bin/inspect.sh ~/.WebIde80/system \
@@ -41,6 +42,27 @@ Found 2 problems
 Line 26: Unused local variable: Unused local variable $articleId
 Line 32: Unreachable statement: Unreachable statement
 --------------------------------------------------------------------------------
+```
+
+## Example (checkstyle format)
+```bash
+php bin/phpstorm-inspect \
+  /opt/PhpStorm-139.1348/bin/inspect.sh ~/.WebIde80/system \
+  . .idea/inspectionProfiles/Project_Default.xml ./src checkstyle > report.xml
+```
+
+## Content of report.xml 
+```
+<?xml version="1.0"?>
+<checkstyle version="1.0.0">
+    <file name="/home/user/project/src/MyBundle/Controller/UserController.php">
+        <error line="17" column="0" severity="warning" message="Undefined field: Field 'usre' not found in class" />
+    </file>
+    <file name="/home/user/project/src/MyBundle/Controller/ArticleController.php">
+        <error line="26" column="0" severity="warning" message="Unused local variable: Unused local variable $articleId" />
+        <error line="32" column="0" severity="warning" message="Unreachable statement: Unreachable statement" />
+    </file>
+</checkstyle>
 ```
 
 ## FAQ / Issues

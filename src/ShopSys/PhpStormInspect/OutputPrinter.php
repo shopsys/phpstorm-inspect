@@ -47,7 +47,7 @@ class OutputPrinter
     /**
      * @param \ShopSys\PhpStormInspect\Problem[filename][] $problemsByFile
      */
-    private function printProblems(array $problemsByFile)
+    protected function printProblems(array $problemsByFile)
     {
         ksort($problemsByFile);
 
@@ -75,7 +75,7 @@ class OutputPrinter
     /**
      * @param \ShopSys\PhpStormInspect\Problem[] $problems
      */
-    private function sortProblemsByLine(array &$problems)
+    protected function sortProblemsByLine(array &$problems)
     {
         usort($problems, function (Problem $problemA, Problem $problemB) {
             return $problemA->line - $problemB->line;
