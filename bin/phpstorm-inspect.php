@@ -62,7 +62,9 @@ try {
                 . ' <inspectedDirectory>'
                 . ' [<format>, accepted values: "%s" / "%s"]'
                 . "\n",
-                $argv[0], FORMAT_TEXT, FORMAT_CHECKSTYLE
+                $argv[0],
+                FORMAT_TEXT,
+                FORMAT_CHECKSTYLE
             )
         );
     }
