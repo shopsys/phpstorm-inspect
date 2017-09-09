@@ -54,7 +54,7 @@ try {
     if ($argc !== 6 && $argc !== 7) {
         throw new \Exception(
             sprintf(
-                'Expected 5 or 6 arguments:\n'
+                "Expected 5 or 6 arguments:\n"
                 . '%s <inspectShExecutableFilepath>'
                 . ' <phpstormSystemPath>'
                 . ' <projectPath>'
