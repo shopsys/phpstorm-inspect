@@ -20,16 +20,17 @@ const FORMAT_CHECKSTYLE = 'checkstyle';
 
 /**
  * @param string $path
+ * @param bool $require whether the path must resolve
  * @return string
  */
-function realpathWithCheck($path)
+function realpathWithCheck($path, $require = true)
 {
     $realpath = realpath($path);
-    if ($realpath === false) {
+    if ($realpath === false && $require) {
         throw new \Exception(sprintf('Path %s not found', $path));
     }
 
-    return $realpath;
+    return $realpath ?: $path;
 }
 
 /**
@@ -72,7 +73,7 @@ try {
     $inspectShExecutableFilepath = realpathWithCheck($argv[1]);
     $phpstormSystemPath = realpathWithCheck($argv[2]);
     $projectPath = realpathWithCheck($argv[3]);
-    $inspectionProfileFilepath = realpathWithCheck($argv[4]);
+    $inspectionProfileFilepath = realpathWithCheck($argv[4], false);
     $inspectedDirectory = realpathWithCheck($argv[5]);
     $outputPath = realpathWithCheck(__DIR__ . '/../output');
     $format = isset($argv[6]) ? $argv[6] : FORMAT_TEXT;
