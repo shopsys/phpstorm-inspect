@@ -76,3 +76,6 @@ Unfortunately not. PhpStorm currently does not support running `inspect.sh` scri
 
 ### What PhpStorm versions are supported?
 The package was tested with PhpStorm 8.0 (139.732) but the newer versions will probably work too.
+
+## Need help
+Contact us on our Slack [http://slack.shopsys-framework.com/](http://slack.shopsys-framework.com/).
