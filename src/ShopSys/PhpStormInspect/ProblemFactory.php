@@ -42,7 +42,9 @@ class ProblemFactory
      */
     private function getFilename($projectPath, SimpleXMLElement $problemXml)
     {
-        $filename = str_replace('file://$PROJECT_DIR$/', $projectPath . '/', (string)$problemXml->file);
+        $filename = (string)$problemXml->file;
+        $filename = preg_replace('#^file://#', '', $filename);
+        $filename = str_replace('$PROJECT_DIR$', $projectPath, $filename);
 
         return realpath($filename);
     }
